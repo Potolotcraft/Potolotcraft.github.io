@@ -18,10 +18,11 @@
 
   const elem = document.getElementById('globeViz');
   const moon = Globe()
-
-    .backgroundColor('rgba(0,0,0,0)')
-    .showGlobe(false)
-    .showAtmosphere(false)
+    .globeImageUrl('./lunar_surface.jpg')
+    .bumpImageUrl('./lunar_bumpmap.jpg')
+    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+    .showGraticules(true)
+    .showAtmosphere(false) // moon has no atmosphere
     .labelText('label')
     .labelSize(1.7)
     .labelDotRadius(0.4)
@@ -37,14 +38,6 @@
 
   fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
     moon.labelsData(landingSites);
-
-  fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
-      .then(landTopo => {
-        world
-          .polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
-          .polygonCapMaterial(new THREE.MeshLambertMaterial({ color: 'darkslategrey', side: THREE.DoubleSide }))
-          .polygonSideColor(() => 'rgba(0,0,0,0)');
-      });
   });
 </script>
 </body>
