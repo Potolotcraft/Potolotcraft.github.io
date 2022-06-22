@@ -41,16 +41,19 @@
       .showGlobe(false)
       .showAtmosphere(false)
       .htmlElementsData(gData)
-      .htmlElement(d => {
-      const el = document.createElement('div');
-      el.innerHTML = markerSvg;
-      el.style.color = d.color;
-      el.style.width = `${d.size}px`;
 
-      el.style['pointer-events'] = 'auto';
-      el.style.cursor = 'pointer';
-      el.onclick = () => console.info(d);
-      return el;
+      .htmlElement(d => {
+      const el1 = document.createElement('div');
+      el1.innerHTML = markerSvg;
+      el1.style.color = 'black';
+      el1.style.width = `20px`;
+      el1.lat = 150;
+      el1.lng = 120;
+
+      el1.style['pointer-events'] = 'auto';
+      el1.style.cursor = 'pointer';
+      el1.onclick = () => console.info(d);
+      return el1;
     })
 
     fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
@@ -64,6 +67,11 @@
 
 
       });
+
+
+function testFunction() {
+  el1.bindPopup("<b>Wolverine</b><br>Cold Lake, Alberta, Canada").openPopup();
+}
 
 
 
