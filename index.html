@@ -14,7 +14,7 @@
 <body>
   <div id="globeViz"></div>
 
-  <script>
+  <script  z-index=1>
 
     const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yellow']);
 
@@ -27,19 +27,17 @@
       .showAtmosphere(false)
       .labelText('label')
     .labelSize(1.7)
-    .labelDotRadius(2.65)
+    .labelDotRadius(1.7)
     .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
     .labelColor(d => colorScale(d.agency))
     .labelLabel(d => `
         <div><b>${d.label}</b></div>
-        <div>Произошло<i>${new Date(d.date).toLocaleDateString()}</i></div>
+        <div>Произошло <i>${new Date(d.date).toLocaleDateString()}</i></div>
       `)
     .onLabelClick(d => window.open(d.url, '_blank'))
     (elem);
 
-            fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
-    moon.labelsData(landingSites);
-  });
+
 
     fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
       .then(landTopo => {
@@ -51,4 +49,9 @@
 
 
   </script>
+
+
+  <script type="text/javascript" z-index=0>             fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
+    moon.labelsData(landingSites);
+  }); </script>
 </body>
