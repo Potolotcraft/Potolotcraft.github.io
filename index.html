@@ -12,7 +12,7 @@
 <div id="globeViz"></div>
 
 <script>
-  const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yellow']);
+  const colorScale = d3.scaleOrdinal(['white']);
 
   const labelsTopOrientation = new Set(['Apollo 12', 'Luna 2', 'Luna 20', 'Luna 21', 'Luna 24', 'LCROSS Probe']); // avoid label collisions
 
@@ -20,12 +20,12 @@
   const moon = Globe()
     .globeImageUrl('./lunar_surface.jpg')
     .bumpImageUrl('./lunar_bumpmap.jpg')
-    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+    .backgroundColor('rgba(0,0,0,0)')
     .showGraticules(true)
     .showAtmosphere(false) // moon has no atmosphere
     .labelText('label')
-    .labelSize(2.5)
-    .labelDotRadius(0.8)
+    .labelSize(2)
+    .labelDotRadius(0.9)
     .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
     .labelColor(d => colorScale(d.agency))
     .labelLabel(d => `
