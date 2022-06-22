@@ -22,6 +22,7 @@
 
     const elem = document.getElementById('globeViz');
     const moon = Globe()
+          .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
       .backgroundColor('rgba(0,0,0,0)')
       .showGlobe(false)
       .showAtmosphere(false)
@@ -37,21 +38,17 @@
     .onLabelClick(d => window.open(d.url, '_blank'))
     (elem);
 
-
-
-    fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
-      .then(landTopo => {
-        moon
-          .polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
-          .polygonCapMaterial(new THREE.MeshLambertMaterial({ color: 'darkslategrey', side: THREE.DoubleSide }))
-          .polygonSideColor(() => 'rgba(0,0,0,0)');
-      });
+    world.controls().autoRotate = true;
+    world.controls().autoRotateSpeed = 1.8;
 
 
   </script>
 
 
-  <script type="text/javascript" z-index=1>             fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
+  <script type="text/javascript" z-index=1>
+    fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
     moon.labelsData(landingSites);
-  }); </script>
+  });
+  </script>
+
 </body>
