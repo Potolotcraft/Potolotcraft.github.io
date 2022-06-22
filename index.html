@@ -14,7 +14,7 @@
 <body>
   <div id="globeViz"></div>
 
-  <script  z-index=1>
+  <script  z-index=0>
 
     const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yellow']);
 
@@ -51,7 +51,7 @@
   </script>
 
 
-  <script type="text/javascript" z-index=0>             fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
+  <script type="text/javascript" z-index=1>             fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
     moon.labelsData(landingSites);
   }); </script>
 </body>
