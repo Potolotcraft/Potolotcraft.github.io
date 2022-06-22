@@ -32,7 +32,7 @@
       .showAtmosphere(false)
       .labelText('label')
     .labelSize(0)
-    .labelDotRadius(0.55)
+    .labelDotRadius(0.4)
     .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
     .labelColor(d => colorScale(d.agency))
     .labelLabel(d => `
@@ -43,7 +43,7 @@
     (elem);
 
     moon.controls().autoRotate = true;
-    moon.controls().autoRotateSpeed = 1;
+    moon.controls().autoRotateSpeed = 0.3;
 
 
   </script>
