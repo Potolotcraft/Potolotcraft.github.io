@@ -20,9 +20,8 @@
 
   const labelsTopOrientation = new Set(['Apollo 12', 'Luna 2', 'Luna 20', 'Luna 21', 'Luna 24', 'LCROSS Probe']);
 
-
-    const world = Globe()
-      (document.getElementById('globeViz'))
+    const elem = document.getElementById('globeViz');
+    const moon = Globe()
       .backgroundColor('rgba(0,0,0,0)')
       .showGlobe(false)
       .showAtmosphere(false)
@@ -37,6 +36,7 @@
         <div>Landing on <i>${new Date(d.date).toLocaleDateString()}</i></div>
       `)
     .onLabelClick(d => window.open(d.url, '_blank'))
+    (elem);
 
     fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
       .then(landTopo => {
