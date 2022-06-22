@@ -19,8 +19,9 @@
   const elem = document.getElementById('globeViz');
   const moon = Globe()
 
-    .showGraticules(true)
-    .showAtmosphere(false) // moon has no atmosphere
+    backgroundColor('rgba(0,0,0,0)')
+    .showGlobe(false)
+    .showAtmosphere(false);
     .labelText('label')
     .labelSize(1.7)
     .labelDotRadius(0.4)
