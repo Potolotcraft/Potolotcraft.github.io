@@ -37,7 +37,6 @@
         <div>Landing on <i>${new Date(d.date).toLocaleDateString()}</i></div>
       `)
     .onLabelClick(d => window.open(d.url, '_blank'))
-    (elem);
 
     fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
       .then(landTopo => {
