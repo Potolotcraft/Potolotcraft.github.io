@@ -40,7 +40,7 @@
 
     fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
       .then(landTopo => {
-        world
+        moon
           .polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
           .polygonCapMaterial(new THREE.MeshLambertMaterial({ color: 'darkslategrey', side: THREE.DoubleSide }))
           .polygonSideColor(() => 'rgba(0,0,0,0)');
