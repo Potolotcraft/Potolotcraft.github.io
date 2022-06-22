@@ -3,16 +3,19 @@
   {
     "lat": -84.72,
     "lng": -49.62,
+    "label": "Забив 1",
     "url": "https://en.wikipedia.org/wiki/LCROSS"
   },
   {
     "lat": 44.12,
     "lng": 19.51,
+    "label": "Забив 2",
     "url": "https://en.wikipedia.org/wiki/Chang%27e_3"
   },
   {
     "lat": -45.4446,
     "lng": 177.5991,
+    "label": "Забив 3",
     "url": "https://en.wikipedia.org/wiki/Chang%27e_4"
   }
 ]

@@ -1,22 +1,41 @@
 <head>
   <style> body { margin: 0; } </style>
 
-  <script src="//unpkg.com/three"></script>
+  <script src="//unpkg.com/d3-array"></script>
+  <script src="//unpkg.com/d3-scale"></script>
 
   <script src="//unpkg.com/globe.gl"></script>
   <!--<script src="../../dist/globe.gl.js"></script>-->
 </head>
 
 <body>
-  <div id="globeViz"></div>
+<div id="globeViz"></div>
 
-  <script>
-    const world = Globe({ animateIn: false })
-      (document.getElementById('globeViz'))
-      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-      .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png');
+<script>
+  const colorScale = d3.scaleOrdinal(['darkred']);
 
-    // Auto-rotate
+  const labelsTopOrientation = new Set(['Apollo 12', 'Luna 2', 'Luna 20', 'Luna 21', 'Luna 24', 'LCROSS Probe']); // avoid label collisions
+
+  const elem = document.getElementById('globeViz');
+  const moon = Globe()
+    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+    .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png');
+    .backgroundColor('rgba(0,0,0,0)')
+    .showGraticules(false)
+    .showAtmosphere(true) // moon has no atmosphere
+    .labelText('label')
+    .labelSize(2)
+    .labelDotRadius(1.2)
+    .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
+    .labelColor(d => colorScale(d.agency))
+    .labelLabel(d => `
+        <div><b>${d.label}</b></div>
+
+      `)
+    .onLabelClick(d => window.open(d.url, '_blank'))
+    (elem);
+
+        // Auto-rotate
     world.controls().autoRotate = true;
     world.controls().autoRotateSpeed = 0.35;
 
@@ -25,7 +44,7 @@
     const CLOUDS_ALT = 0.004;
     const CLOUDS_ROTATION_SPEED = -0.006; // deg/frame
 
-    new THREE.TextureLoader().load(CLOUDS_IMG_URL, cloudsTexture => {
+        new THREE.TextureLoader().load(CLOUDS_IMG_URL, cloudsTexture => {
       const clouds = new THREE.Mesh(
         new THREE.SphereBufferGeometry(world.getGlobeRadius() * (1 + CLOUDS_ALT), 75, 75),
         new THREE.MeshPhongMaterial({ map: cloudsTexture, transparent: true })
@@ -37,5 +56,9 @@
         requestAnimationFrame(rotateClouds);
       })();
     });
-  </script>
+
+  fetch('./moon_landings.json').then(r => r.json()).then(landingSites => {
+    moon.labelsData(landingSites);
+  });
+</script>
 </body>
