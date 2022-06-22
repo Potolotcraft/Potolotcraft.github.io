@@ -31,8 +31,8 @@
       .showGlobe(true)
       .showAtmosphere(false)
       .labelText('label')
-    .labelSize(1.7)
-    .labelDotRadius(1)
+    .labelSize(0)
+    .labelDotRadius(0.75)
     .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
     .labelColor(d => colorScale(d.agency))
     .labelLabel(d => `
