@@ -5,20 +5,20 @@
     "lng": -49.62,
     "label": "Забив 1",
     "date": "2022-1-1",
-    "url": "https://en.wikipedia.org"
+    "url": "#1"
   },
   {
     "lat": 44.12,
     "lng": 19.51,
     "label": "Забив 2",
     "date": "2022-1-1",
-    "url": "https://en.wikipedia.org"
+    "url": "#2"
   },
   {
     "lat": -45.4446,
     "lng": 177.5991,
     "label": "Забив 3",
     "date": "2022-1-1",
-    "url": "https://en.wikipedia.org"
+    "url": "#3"
   }
 ]
