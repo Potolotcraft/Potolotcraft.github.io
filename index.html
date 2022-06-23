@@ -39,7 +39,7 @@
         <div><b>${d.label}</b></div>
         <div>Произошло <i>${new Date(d.date).toLocaleDateString()}</i></div>
       `)
-    .onLabelClick(d => window.open(d.url, '_blank'))
+    .onLabelClick(d => window.open(d.url, '_self'))
     (elem);
 
     moon.controls().autoRotate = true;
